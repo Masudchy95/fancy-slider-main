@@ -74,7 +74,7 @@ const createSlider = () => {
 
   sliderContainer.appendChild(prevNext);
   document.querySelector(".main").style.display = "block";
-  // hide image aria
+  // hide image area
   imagesArea.style.display = "none";
   const duration = document.getElementById("duration").value || 1000;
   if (duration <= 0) {
