@@ -43,20 +43,18 @@ const getImages = (query) => {
     .then((data) => showImages(data.hits))
     .catch((err) => console.log(err));
 };
-
+// Toggle added for slider remove and add
 let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
-  element.classList.add("added");
+  element.classList.toggle("added");
 
   let item = sliders.indexOf(img);
   if (item === -1) {
     sliders.push(img);
-  } else {
-    alert("Hey, Already added !");
-  }
+  } 
 };
-var timer;
+let timer;
 const createSlider = () => {
   // check slider image length
   if (sliders.length < 2) {
@@ -78,14 +76,20 @@ const createSlider = () => {
   // hide image aria
   imagesArea.style.display = "none";
   const duration = document.getElementById("duration").value || 1000;
-  sliders.forEach((slide) => {
-    let item = document.createElement("div");
-    item.className = "slider-item";
-    item.innerHTML = `<img class="w-100"
-    src="${slide}"
-    alt="">`;
-    sliderContainer.appendChild(item);
-  });
+  if (duration > 0) {
+    sliders.forEach((slide) => {
+      let item = document.createElement("div");
+      item.className = "slider-item";
+      item.innerHTML = `<img class="w-100"
+      src="${slide}"
+      alt="">`;
+      sliderContainer.appendChild(item);
+    });
+  }
+  else{
+    alert("Ooppss!! Negative values are prohibited")
+  }
+  
   changeSlide(0);
   timer = setInterval(function () {
     slideIndex++;
