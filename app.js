@@ -45,9 +45,10 @@ const getImages = (query) => {
 };
 // Toggle added for slider remove and add
 let slideIndex = 0;
+
 const selectItem = (event, img) => {
   let element = event.target;
-  element.classList.toggle("added");
+    element.classList.toggle("added");
 
   let item = sliders.indexOf(img);
   if (item === -1) {
@@ -76,18 +77,17 @@ const createSlider = () => {
   // hide image aria
   imagesArea.style.display = "none";
   const duration = document.getElementById("duration").value || 1000;
-  if (duration > 0) {
+  if (duration <= 0) {
+    alert("Ooppss!! Please insert valid value to show the slideshow of the images.");
+    imagesArea.style.display = "block";
+  }
+  else{
     sliders.forEach((slide) => {
       let item = document.createElement("div");
       item.className = "slider-item";
-      item.innerHTML = `<img class="w-100"
-      src="${slide}"
-      alt="">`;
+      item.innerHTML = `<img class="w-100" src="${slide}" alt="">`;
       sliderContainer.appendChild(item);
     });
-  }
-  else{
-    alert("Ooppss!! Negative values are prohibited")
   }
   
   changeSlide(0);
@@ -133,3 +133,10 @@ searchBtn.addEventListener("click", function () {
 sliderBtn.addEventListener("click", function () {
   createSlider();
 });
+
+// const buttonClickCounter = () => {
+//   document.getElementById("input-number").value++;
+//   if (${image.user_id} === ) {
+    
+//   }
+// }
