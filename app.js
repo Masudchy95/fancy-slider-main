@@ -134,9 +134,3 @@ sliderBtn.addEventListener("click", function () {
   createSlider();
 });
 
-// const buttonClickCounter = () => {
-//   document.getElementById("input-number").value++;
-//   if (${image.user_id} === ) {
-    
-//   }
-// }
